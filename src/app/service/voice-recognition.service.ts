@@ -13,7 +13,7 @@ export class VoiceRecognitionService {
   public text = '';
   tempWords;
   outputText: string = ' ';
-  output: string = "The Relevent Project IDs are: ";
+  output: string = "The relevant Project IDs are: ";
   testArray: number[] = [100001, 100002, 100003, 101001, 101002, 101003, 201001, 201002, 201003];
   parsedArray: string[] = [];
 
@@ -37,7 +37,7 @@ export class VoiceRecognitionService {
 
   start() {
     this.outputText = '';
-    this.output = 'The Relevent Project IDs are: ';
+    this.output = 'The relevant Project IDs are: ';
     this.isStoppedSpeechRecog = false;
     this.recognition.start();
     console.log("Speech recognition started")
@@ -53,14 +53,11 @@ export class VoiceRecognitionService {
   }
   stop() {
     this.outputText = '';
-    this.output = 'The Relevent Project IDs are: ';
+    this.output = 'The relevant Project IDs are: ';
     this.isStoppedSpeechRecog = true;
     this.wordConcat1();
     this.recognition.stop()
     console.log(this.text);
-
-
-
   }
 
   wordConcat() {
@@ -74,23 +71,21 @@ export class VoiceRecognitionService {
   }
 
   arrayCheck(){
-    this.outputText = '';
-    this.output = 'The Relevent Project IDs are: ';
-    for(let i = 1; i <= 9; i++)
+    this.outputText = '<br>';
+    this.output = 'The relevant Project IDs are: ';
+    for(let i = 0; i < 9; i++)
       {
         this.parsedArray[i] = String(this.testArray[i]);
       }
 
-      for(let k = 1; k <= 9; k++)
+      for(let k = 0; k < 9; k++)
       {
       var M = (this.text).length;
       var N = (this.parsedArray[k]).length;
 
-       /* A loop to slide pat[] one by one */
       for (let i = 0; i <= N - M; i++)
         {
          var j;
-         /* For current index i, check for pattern match */
          for (j = 0; j < M; j++)
              if (this.parsedArray[k][i + j] != this.text[j])
                  break;
@@ -98,7 +93,8 @@ export class VoiceRecognitionService {
          if (j == M)
          {
          console.log(this.testArray[k]);
-         this.outputText = this.outputText + this.testArray[k] + ' ';
+         this.outputText = this.outputText + this.testArray[k] + '<br>';
+         break;
          }
         }
        }
@@ -111,6 +107,5 @@ export class VoiceRecognitionService {
 
 
 }
-
 
 
