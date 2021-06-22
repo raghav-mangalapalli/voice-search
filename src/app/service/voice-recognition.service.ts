@@ -3,9 +3,9 @@ import { Injectable } from '@angular/core';
 
 declare var webkitSpeechRecognition: any;
 
- @Injectable({
-   providedIn: 'root'
- })
+ //@Injectable({
+ //  providedIn: 'root'
+ //})
 export class VoiceRecognitionService {
 
  recognition =  new webkitSpeechRecognition();
