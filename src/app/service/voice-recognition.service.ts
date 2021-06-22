@@ -3,22 +3,20 @@ import { Injectable } from '@angular/core';
 
 declare var webkitSpeechRecognition: any;
 
-// @Injectable({
-//   providedIn: 'root'
-// })
+ @Injectable({
+   providedIn: 'root'
+ })
 export class VoiceRecognitionService {
 
  recognition =  new webkitSpeechRecognition();
   isStoppedSpeechRecog = false;
   public text = '';
   tempWords;
-  testNum: string = "potato";
   outputText: string = ' ';
   output: string = "The Relevent Project IDs are: ";
-  testArray: number[] = [100001, 100002, 100003, 101001, 101002, 101003];
-  parsedArray: string[] = ['a', 'b', 'c', 'd', 'e'];
-  newArray: number[] = [1, 2, 3, 4, 5];
-  
+  testArray: number[] = [100001, 100002, 100003, 101001, 101002, 101003, 201001, 201002, 201003];
+  parsedArray: string[] = [];
+
 
   constructor() { }
 
@@ -60,9 +58,9 @@ export class VoiceRecognitionService {
     this.wordConcat1();
     this.recognition.stop()
     console.log(this.text);
-    
 
-    
+
+
   }
 
   wordConcat() {
@@ -78,17 +76,17 @@ export class VoiceRecognitionService {
   arrayCheck(){
     this.outputText = '';
     this.output = 'The Relevent Project IDs are: ';
-    for(let i = 0; i <= 5; i++)
+    for(let i = 1; i <= 9; i++)
       {
         this.parsedArray[i] = String(this.testArray[i]);
       }
 
-      for(let i = 0; i <=5; i++)
+      for(let i = 1; i <=9; i++)
       {
         this.parsedArray[i] = this.parsedArray[i].substring(0,3);
       }
 
-      for(let i = 0; i <= 5; i++)
+      for(let i = 1; i <= 9; i++)
         {
           if(this.text == this.parsedArray[i])
             {
@@ -96,10 +94,10 @@ export class VoiceRecognitionService {
               this.outputText = this.outputText + this.testArray[i] + ' ';
             }
         }
-        
-      this.output = this.output + this.outputText;  
-  
-  
+
+      this.output = this.output + this.outputText;
+
+
     }
 
 
