@@ -4,8 +4,8 @@ import { Injectable } from '@angular/core';
 declare var webkitSpeechRecognition: any;
 
  //@Injectable({
- //  providedIn: 'root'
- //})
+//   providedIn: 'root'
+// })
 export class VoiceRecognitionService {
 
  recognition =  new webkitSpeechRecognition();
@@ -81,19 +81,27 @@ export class VoiceRecognitionService {
         this.parsedArray[i] = String(this.testArray[i]);
       }
 
-      for(let i = 1; i <=9; i++)
+      for(let k = 1; k <= 9; k++)
       {
-        this.parsedArray[i] = this.parsedArray[i].substring(0,3);
-      }
+      var M = (this.text).length;
+      var N = (this.parsedArray[k]).length;
 
-      for(let i = 1; i <= 9; i++)
+       /* A loop to slide pat[] one by one */
+      for (let i = 0; i <= N - M; i++)
         {
-          if(this.text == this.parsedArray[i])
-            {
-              console.log(this.testArray[i]);
-              this.outputText = this.outputText + this.testArray[i] + ' ';
-            }
+         var j;
+         /* For current index i, check for pattern match */
+         for (j = 0; j < M; j++)
+             if (this.parsedArray[k][i + j] != this.text[j])
+                 break;
+
+         if (j == M)
+         {
+         console.log(this.testArray[k]);
+         this.outputText = this.outputText + this.testArray[k] + ' ';
+         }
         }
+       }
 
       this.output = this.output + this.outputText;
 
@@ -103,3 +111,6 @@ export class VoiceRecognitionService {
 
 
 }
+
+
+
