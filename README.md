@@ -1,3 +1,5 @@
+![image](https://user-images.githubusercontent.com/75008683/146673740-058c739a-d51b-495f-8bb4-bcdbc4f424b4.png)
+
 # VoiceRecognition
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 1.7.2.
